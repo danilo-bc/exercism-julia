@@ -25,6 +25,7 @@ Manifest.toml
 
 # Notebooks, which will not be part of the solution
 *.ipynb
+.ipynb_checkpoints
 
 # My personal exercism folder
 .exercism
