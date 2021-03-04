@@ -1,30 +1,14 @@
+
 function raindrops(number)
-    if number % 3 == 0
-        if number % 5 == 0
-            if number % 7 == 0
-                return "PlingPlangPlong"
-            else
-                return "PlingPlang"
-            end
-        else
-            if number % 7 == 0
-                return "PlingPlong"
-            else
-                return "Pling"
-            end
-        end
+    # Encode each number to its sound
+    raindrop_code = [(3,"Pling"), (5, "Plang"), (7, "Plong")]
+
+    # Test each pair with the number
+    res = mapreduce(k -> number % k[1] == 0 ? k[2] : "", *, raindrop_code)
+
+    if isempty(res)
+        return string(number)
     else
-        if number % 5 == 0
-            if number % 7 == 0
-                return "PlangPlong"
-            else
-                return "Plang"
-            end
-        else
-            if number % 7 == 0
-                return "Plong"
-            end
-        end
+        return res
     end
-    return string(number)
 end
