@@ -1,39 +1,37 @@
-using Dates
+using Dates: value, Minute
 import Base.+
 import Base.==
 import Base.-
 
-mutable struct Clock{T<:Integer}
+struct Clock{T<:Integer}
     hours::T
     minutes::T
-end
 
-function normalize_time(c::Clock)
-    c.hours += (c.minutes ÷ 60)
-    c.minutes %= 60
-
-    if c.minutes < 0
-        c.hours -= 1
-        c.minutes += 60 
+    function Clock(hours, minutes)
+        new{Integer}(normalize_time(hours, minutes)...)
     end
 
-    c.hours %= 24
-    if c.hours < 0
-        c.hours += 24
+    function normalize_time(hours, minutes)
+        hours += (minutes ÷ 60)
+        minutes %= 60
+    
+        if minutes < 0
+            hours -= 1
+            minutes += 60 
+        end
+    
+        hours = mod(hours, 24)
+    
+        return hours, minutes
     end
-
-    return c
 end
 
 function Base.show(io::IO, c::Clock)
-    normalize_time(c)
     print(io, "\"", lpad(c.hours, 2, '0'), ":", lpad(c.minutes, 2, '0'), "\"")
 end
 
 function +(x::Clock, y::Dates.Minute)
-    x.minutes += y.value
-    normalize_time(x)
-    return x
+    return Clock(x.hours, x.minutes + Dates.value(y))
 end
 
 function -(x::Clock, y::Dates.Minute)
@@ -41,7 +39,5 @@ function -(x::Clock, y::Dates.Minute)
 end
 
 function ==(x::Clock, y::Clock)
-    normalize_time(x)
-    normalize_time(y)
     return ((x.hours == y.hours) && (x.minutes == y.minutes))
 end
