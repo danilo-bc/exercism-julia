@@ -1,17 +1,11 @@
 using Dates: value, Minute
-import Base.+
-import Base.==
-import Base.-
+import Base: +, - , ==, show
 
-struct Clock{T<:Integer}
+struct Clock{T}
     hours::T
     minutes::T
 
-    function Clock(hours, minutes)
-        new{Integer}(normalize_time(hours, minutes)...)
-    end
-
-    function normalize_time(hours, minutes)
+    function Clock{T}(hours, minutes) where {T}
         hours += (minutes ÷ 60)
         minutes %= 60
     
@@ -21,23 +15,18 @@ struct Clock{T<:Integer}
         end
     
         hours = mod(hours, 24)
-    
-        return hours, minutes
+        
+        new(hours, minutes)
     end
+
 end
 
-function Base.show(io::IO, c::Clock)
-    print(io, "\"", lpad(c.hours, 2, '0'), ":", lpad(c.minutes, 2, '0'), "\"")
-end
+Clock(hours::T, minutes::T) where {T} = Clock{T}(hours, minutes)
 
-function +(x::Clock, y::Dates.Minute)
-    return Clock(x.hours, x.minutes + Dates.value(y))
-end
+show(io::IO, c::Clock) = print(io, "\"", lpad(c.hours, 2, '0'), ":", lpad(c.minutes, 2, '0'), "\"")
 
-function -(x::Clock, y::Dates.Minute)
-    return +(x::Clock, -y::Dates.Minute)
-end
++(x::Clock, y::Minute) = Clock(x.hours, x.minutes + value(y))
 
-function ==(x::Clock, y::Clock)
-    return ((x.hours == y.hours) && (x.minutes == y.minutes))
-end
+-(x::Clock, y::Minute) = +(x, -y)
+
+==(x::Clock, y::Clock) = (x.hours == y.hours) && (x.minutes == y.minutes)
