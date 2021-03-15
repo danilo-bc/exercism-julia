@@ -21,7 +21,7 @@ struct Clock{T}
 
 end
 
-Clock(hours::T, minutes::T) where {T} = Clock{T}(hours, minutes)
+Clock(hours::T, minutes::T) where {T <: Integer} = Clock{T}(hours, minutes)
 
 show(io::IO, c::Clock) = print(io, "\"", lpad(c.hours, 2, '0'), ":", lpad(c.minutes, 2, '0'), "\"")
 
