@@ -1,29 +1,27 @@
 using Random
 
 mutable struct Robot
-    name_letters::String
-    name_numbers::Int32
-    Robot() = new(generate_unique_robot_name()...)
+    robot_name::String
+    Robot() = new(generate_unique_robot_name())
 end
 
-robot_name_pool = Set()
+const robot_name_pool = Set{String}()
+
 function generate_unique_robot_name()
-    letter_part::String = randstring('A':'Z', 2)
-    number_part::Int32 = rand(0:999)
+    robot_name = randstring('A':'Z', 2)*randstring('0':'9', 3)
     
-    while (letter_part, number_part) ∈ robot_name_pool
-        letter_part = randstring('A':'Z', 2)
-        number_part = rand(0:999)
+    while robot_name ∈ robot_name_pool
+        robot_name = randstring('A':'Z', 2)*randstring('0':'9', 3)
     end
 
-    push!(robot_name_pool, (letter_part, number_part))
-    return letter_part, number_part
+    push!(robot_name_pool, robot_name)
+    return robot_name
 end
 
 function reset!(instance::Robot)
-    instance.name_letters, instance.name_numbers = generate_unique_robot_name()
+    instance.robot_name = generate_unique_robot_name()
 end
 
 function name(instance::Robot)
-    return instance.name_letters*lpad(instance.name_numbers, 3, '0')
+    return instance.robot_name
 end
