@@ -6,12 +6,15 @@ mutable struct Robot
 end
 
 const robot_name_pool = Set{String}()
+# This is the limit of available Robot names based on problem constraints
+const name_limit = (26^2)*(10^3)
 
 function generate_unique_robot_name()
-    robot_name = randstring('A':'Z', 2)*randstring('0':'9', 3)
-    
-    while robot_name ∈ robot_name_pool
+    length(robot_name_pool) == name_limit && throw(ErrorException("There are no more unique robot names"))
+    robot_name = ""
+    while true
         robot_name = randstring('A':'Z', 2)*randstring('0':'9', 3)
+        robot_name ∉ robot_name_pool && break
     end
 
     push!(robot_name_pool, robot_name)
