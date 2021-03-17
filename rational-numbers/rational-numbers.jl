@@ -3,8 +3,8 @@ import Base: +, -, *, /, ^, ==, >, <, >=, <=, abs, show, one, zero
 struct RationalNumber{T<: Integer} <: Real
     num::T
     den::T
-    function RationalNumber{T}(num, den) where{T<:Integer} 
-        if den == 0 
+    function RationalNumber{T}(num::T, den::T) where {T<:Integer} 
+        if num == den == 0 
             throw(ArgumentError("Denominator can't be 0"))
         else
             num, den = num/gcd(num, den), den/gcd(num, den)

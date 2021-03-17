@@ -102,7 +102,7 @@ end
 # https://github.com/JuliaLang/julia/blob/52bafeb981bac548afd2264edb518d8d86944dca/LICENSE.md
 @testset "Ordering" begin
     for a in -5:5, b in -5:5, c in -5:5
-        b == 0 && continue
+        a == b == 0 && continue
         
         r = RationalNumber(a, b)
 
@@ -114,7 +114,7 @@ end
         @test (r >  c) == (a / b >  c)
 
         for d in -5:5
-            d == 0 && continue
+            c == d == 0 && continue
 
             s = RationalNumber(c, d)
 
