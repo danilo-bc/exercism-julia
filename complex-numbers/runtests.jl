@@ -60,16 +60,16 @@ end
 
 # Bonus A
 @testset "Complex exponential" begin
-    @test_skip exp(ComplexNumber(0, π)) ≈ ComplexNumber(-1, 0)
-    @test_skip exp(ComplexNumber(0, 0)) == ComplexNumber(1, 0)
-    @test_skip exp(ComplexNumber(1, 0)) ≈ ComplexNumber(ℯ, 0)
-    @test_skip exp(ComplexNumber(log(2), π)) ≈ ComplexNumber(-2, 0)
+    @test_broken exp(ComplexNumber(0, π)) ≈ ComplexNumber(-1, 0)
+    @test exp(ComplexNumber(0, 0)) == ComplexNumber(1, 0)
+    @test exp(ComplexNumber(1, 0)) ≈ ComplexNumber(ℯ, 0)
+    @test_broken exp(ComplexNumber(log(2), π)) ≈ ComplexNumber(-2, 0)
 end
 
 # Bonus B
 @testset "Syntax sugar jm" begin
-    @test_skip ComplexNumber(0, 1)  == jm
-    @test_skip ComplexNumber(1, 0)  == 1 + 0jm
-    @test_skip ComplexNumber(1, 1)  == 1 + 1jm
-    @test_skip ComplexNumber(-1, 0) == jm^2
+    @test ComplexNumber(0, 1)  == jm
+    @test ComplexNumber(1, 0)  == 1 + 0jm
+    @test ComplexNumber(1, 1)  == 1 + 1jm
+    @test ComplexNumber(-1, 0) == jm^2
 end
