@@ -5,19 +5,35 @@ mutable struct Robot
     Robot() = new(generate_unique_robot_name())
 end
 
-const robot_name_pool = Set{String}()
-# This is the limit of available Robot names based on problem constraints
-const name_limit = (26^2)*(10^3)
+# Pre-generate all possible names
+const number_of_possible_names = 26^2*10^3
+const robot_name_list = Array{String,1}(undef, number_of_possible_names)
+list_index = 1
+
+# Generate all sequences
+for c1 in 'A':'Z'
+    for c2 in 'A':'Z'
+        for c3 in '0':'9'
+            for c4 in '0':'9'
+                for c5 in '0':'9'
+                    robot_name_list[list_index] = join([c1, c2, c3, c4, c5])
+                    global list_index += 1
+                end
+            end
+        end
+    end
+end
+# reset index
+list_index = 1
+
+# Pre-generate a random sequence for handing out robot names
+const name_sequence = collect(1:length(robot_name_list))
+shuffle!(name_sequence)
 
 function generate_unique_robot_name()
-    length(robot_name_pool) == name_limit && throw(ErrorException("There are no more unique robot names"))
-    robot_name = ""
-    while true
-        robot_name = randstring('A':'Z', 2)*randstring('0':'9', 3)
-        robot_name ∉ robot_name_pool && break
-    end
-
-    push!(robot_name_pool, robot_name)
+    list_index > length(robot_name_list) && throw(ErrorException("There are no more unique robot names"))
+    robot_name = robot_name_list[name_sequence[list_index]]
+    global list_index += 1
     return robot_name
 end
 
