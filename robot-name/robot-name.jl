@@ -5,9 +5,6 @@ mutable struct Robot
     Robot() = new(assign_unique_robot_name())
 end
 
-# Pre-generate all possible names
-const number_of_possible_names = 26^2*10^3
-
 # Generator of all possible names
 const robot_name_list = vec([join([c1, c2, c3, c4, c5]) for c1 = 'A':'Z', c2='A':'Z', c3 = '0':'9', c4 = '0':'9', c5 = '0':'9'])
 
@@ -25,10 +22,12 @@ end
 function reset!(instance::Robot)
     # Save the old name to put it back into the list,
     # assign a new one and push the old name back
+    # Then shuffle the old name
     old_name = instance.robot_name
     instance.robot_name = assign_unique_robot_name()
     push!(robot_name_list, old_name)
-    shuffle!(robot_name_list)
+    i = rand(keys(robot_name_list))
+    robot_name_list[i], robot_name_list[end] = robot_name_list[end], robot_name_list[i]
 end
 
 function name(instance::Robot)
