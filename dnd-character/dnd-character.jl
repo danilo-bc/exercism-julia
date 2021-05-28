@@ -3,7 +3,8 @@ function modifier(ability)
 end
 
 function ability()
-    return rand(3:18, 1)[1]
+    dice_results = rand(1:6, 4)
+    return sum(dice_results) - minimum(dice_results)
 end
 
 mutable struct DNDCharacter
