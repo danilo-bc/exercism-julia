@@ -14,14 +14,14 @@ end
     @test !(4 in CustomSet([1, 2, 3]))
 end
 
-# @testset "subset" begin
-#     @test  issubset(CustomSet([]), CustomSet([]))
-#     @test  issubset(CustomSet([]), CustomSet([1]))
-#     @test !issubset(CustomSet([1]), CustomSet([]))
-#     @test  issubset(CustomSet([1, 2, 3]), CustomSet([1, 2, 3]))
-#     @test  issubset(CustomSet([1, 2, 3]), CustomSet([4, 1, 2, 3]))
-#     @test !issubset(CustomSet([1, 2, 3]), CustomSet([4, 1, 3]))
-# end
+@testset "subset" begin
+    @test  issubset(CustomSet([]), CustomSet([]))
+    @test  issubset(CustomSet([]), CustomSet([1]))
+    @test !issubset(CustomSet([1]), CustomSet([]))
+    @test  issubset(CustomSet([1, 2, 3]), CustomSet([1, 2, 3]))
+    @test  issubset(CustomSet([1, 2, 3]), CustomSet([4, 1, 2, 3]))
+    @test !issubset(CustomSet([1, 2, 3]), CustomSet([4, 1, 3]))
+end
 
 # @testset "disjoint" begin
 #     @test  disjoint(CustomSet([]), CustomSet([]))
