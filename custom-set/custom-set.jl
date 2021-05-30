@@ -1,5 +1,11 @@
 import Base: isempty, size, length, IndexStyle, getindex, iterate, copy, ==, push!, intersect!, union!, union
-
+# Observation:
+# while this implementation passes all functional tests,
+# there's no guarantee of performance in any test!
+# Notice how no hash is calculated and how equality
+# operations require a sort.
+# At this point, code can be refactored as necessary,
+# always running all tests in each step
 mutable struct CustomSet{T} <: AbstractSet{T}
     contents::Vector{T}
 end
