@@ -58,47 +58,47 @@ end
     end
 end
 
-# @testset "intersection" begin
-#     @testset "in-place" begin
-#         @test begin
-#             cs1 = CustomSet([])
-#             cs2 = CustomSet([])
-#             intersect!(cs1, cs2)
-#             isempty(cs1)
-#         end
-#         @test begin
-#             cs1 = CustomSet([])
-#             cs2 = CustomSet([3, 2, 5])
-#             intersect!(cs1, cs2)
-#             isempty(cs1)
-#         end
-#         @test begin
-#             cs1 = CustomSet([1, 2, 3, 4])
-#             cs2 = CustomSet([])
-#             intersect!(cs1, cs2)
-#             isempty(cs1)
-#         end
-#         @test begin
-#             cs1 = CustomSet([1, 2, 3])
-#             cs2 = CustomSet([4, 5, 6])
-#             intersect!(cs1, cs2)
-#             isempty(cs1)
-#         end
-#         @test begin
-#             cs1 = CustomSet([1, 2, 3, 4])
-#             cs2 = CustomSet([3, 2, 5])
-#             intersect!(cs1, cs2)
-#             cs1 == CustomSet([2, 3])
-#         end
-#     end
-#     @testset "not in-place" begin
-#         @test isempty(intersect(CustomSet([]), CustomSet([])))
-#         @test isempty(intersect(CustomSet([]), CustomSet([3, 2, 5])))
-#         @test isempty(intersect(CustomSet([1, 2, 3, 4]), CustomSet([])))
-#         @test isempty(intersect(CustomSet([1, 2, 3]), CustomSet([4, 5, 6])))
-#         @test intersect(CustomSet([1, 2, 3, 4]), CustomSet([3, 2, 5])) == CustomSet([2, 3])
-#     end
-# end
+@testset "intersection" begin
+    @testset "in-place" begin
+        @test begin
+            cs1 = CustomSet([])
+            cs2 = CustomSet([])
+            intersect!(cs1, cs2)
+            isempty(cs1)
+        end
+        @test begin
+            cs1 = CustomSet([])
+            cs2 = CustomSet([3, 2, 5])
+            intersect!(cs1, cs2)
+            isempty(cs1)
+        end
+        @test begin
+            cs1 = CustomSet([1, 2, 3, 4])
+            cs2 = CustomSet([])
+            intersect!(cs1, cs2)
+            isempty(cs1)
+        end
+        @test begin
+            cs1 = CustomSet([1, 2, 3])
+            cs2 = CustomSet([4, 5, 6])
+            intersect!(cs1, cs2)
+            isempty(cs1)
+        end
+        @test begin
+            cs1 = CustomSet([1, 2, 3, 4])
+            cs2 = CustomSet([3, 2, 5])
+            intersect!(cs1, cs2)
+            cs1 == CustomSet([2, 3])
+        end
+    end
+    @testset "not in-place" begin
+        @test isempty(intersect(CustomSet([]), CustomSet([])))
+        @test isempty(intersect(CustomSet([]), CustomSet([3, 2, 5])))
+        @test isempty(intersect(CustomSet([1, 2, 3, 4]), CustomSet([])))
+        @test isempty(intersect(CustomSet([1, 2, 3]), CustomSet([4, 5, 6])))
+        @test intersect(CustomSet([1, 2, 3, 4]), CustomSet([3, 2, 5])) == CustomSet([2, 3])
+    end
+end
 
 # @testset "complement (difference)" begin
 #     @testset "in-place" begin
