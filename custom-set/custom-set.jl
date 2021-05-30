@@ -1,4 +1,4 @@
-import Base: isempty, size, IndexStyle, getindex
+import Base: isempty, size, IndexStyle, getindex, ==
 
 struct CustomSet{T} <: AbstractVector{T}
     contents::Vector{T}
@@ -20,3 +20,5 @@ function disjoint(cs1::CustomSet, cs2::CustomSet)
     end
     return true
 end
+
+==(cs1::CustomSet, cs2::CustomSet) = cs1.contents == sort(cs2.contents)
