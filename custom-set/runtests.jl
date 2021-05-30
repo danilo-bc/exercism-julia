@@ -180,16 +180,16 @@ end
     @test length(CustomSet([1, 2, 3])) == 3
 end
 
-# @testset "iterable" begin
-#     @test begin
-#         cs1 = CustomSet([1, 2, 3, 4])
-#         cs2 = CustomSet([])
-#         for element in cs1
-#             push!(cs2, element)
-#         end
-#         cs1 == cs2
-#     end
-# end
+@testset "iterable" begin
+    @test begin
+        cs1 = CustomSet([1, 2, 3, 4])
+        cs2 = CustomSet([])
+        for element in cs1
+            push!(cs2, element)
+        end
+        cs1 == cs2
+    end
+end
 
 # @testset "copy" begin
 #     @test begin
