@@ -1,6 +1,6 @@
 import Base: isempty, size, IndexStyle, getindex, ==, push!, intersect!
 
-struct CustomSet{T} <: AbstractVector{T}
+mutable struct CustomSet{T} <: AbstractVector{T}
     contents::Vector{T}
 end
 
@@ -35,3 +35,22 @@ function intersect!(cs1::CustomSet, cs2::CustomSet)
     return cs1
 end
 
+function complement(cs1::CustomSet, cs2::CustomSet)
+    complement_vec = Vector{eltype(cs1.contents)}(undef, 0)
+    for item in cs1
+        if !(item in cs2)
+            push!(complement_vec, item)
+        end
+    end
+    return CustomSet(complement_vec)
+end
+
+function complement!(cs1::CustomSet, cs2::CustomSet)
+    complement_vec = Vector{eltype(cs1.contents)}(undef, 0)
+    for item in cs1
+        if !(item in cs2)
+            push!(complement_vec, item)
+        end
+    end
+    cs1.contents = complement_vec
+end
