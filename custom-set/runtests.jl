@@ -171,9 +171,9 @@ end
 end
 
 # # language specific tests
-# @testset "implements correct abstract type" begin
-#     @test CustomSet <: Base.AbstractSet
-# end
+@testset "implements correct abstract type" begin
+    @test CustomSet <: Base.AbstractSet
+end
 
 # @testset "length" begin
 #     @test length(CustomSet([])) == 0
