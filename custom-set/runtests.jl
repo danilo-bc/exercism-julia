@@ -91,13 +91,13 @@ end
             cs1 == CustomSet([2, 3])
         end
     end
-    # @testset "not in-place" begin
-    #     @test isempty(intersect(CustomSet([]), CustomSet([])))
-    #     @test isempty(intersect(CustomSet([]), CustomSet([3, 2, 5])))
-    #     @test isempty(intersect(CustomSet([1, 2, 3, 4]), CustomSet([])))
-    #     @test isempty(intersect(CustomSet([1, 2, 3]), CustomSet([4, 5, 6])))
-    #     @test intersect(CustomSet([1, 2, 3, 4]), CustomSet([3, 2, 5])) == CustomSet([2, 3])
-    # end
+    @testset "not in-place" begin
+        @test isempty(intersect(CustomSet([]), CustomSet([])))
+        @test isempty(intersect(CustomSet([]), CustomSet([3, 2, 5])))
+        @test isempty(intersect(CustomSet([1, 2, 3, 4]), CustomSet([])))
+        @test isempty(intersect(CustomSet([1, 2, 3]), CustomSet([4, 5, 6])))
+        @test intersect(CustomSet([1, 2, 3, 4]), CustomSet([3, 2, 5])) == CustomSet([2, 3])
+    end
 end
 
 # @testset "complement (difference)" begin
