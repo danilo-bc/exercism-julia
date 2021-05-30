@@ -191,11 +191,11 @@ end
     end
 end
 
-# @testset "copy" begin
-#     @test begin
-#         cs1 = CustomSet([1, 2, 3])
-#         cs2 = copy(cs1)
-#         push!(cs1, 4)
-#         cs2 == CustomSet([1, 2, 3])
-#     end
-# end
+@testset "copy" begin
+    @test begin
+        cs1 = CustomSet([1, 2, 3])
+        cs2 = copy(cs1)
+        push!(cs1, 4)
+        cs2 == CustomSet([1, 2, 3])
+    end
+end
