@@ -1,4 +1,4 @@
-import Base: isempty, size, IndexStyle, getindex, ==, push!, intersect!, union!
+import Base: isempty, size, IndexStyle, getindex, ==, push!, intersect!, union!, union
 
 mutable struct CustomSet{T} <: AbstractVector{T}
     contents::Vector{T}
@@ -56,3 +56,4 @@ function complement!(cs1::CustomSet, cs2::CustomSet)
 end
 
 union!(cs1::CustomSet, cs2::CustomSet) = union!(cs1.contents, cs2.contents)
+union(cs1::CustomSet, cs2::CustomSet) = CustomSet(union(cs1.contents, cs2.contents))
