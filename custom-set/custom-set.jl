@@ -1,4 +1,4 @@
-import Base: isempty, size, length, IndexStyle, getindex, ==, push!, intersect!, union!, union
+import Base: isempty, size, length, IndexStyle, getindex, iterate, ==, push!, intersect!, union!, union
 
 mutable struct CustomSet{T} <: AbstractSet{T}
     contents::Vector{T}
@@ -12,6 +12,9 @@ size(cs::CustomSet) = size(cs.contents)
 length(cs::CustomSet) = length(cs.contents)
 IndexStyle(::Type{<:CustomSet}) = IndexLinear()
 getindex(cs::CustomSet, i::Int) = cs.contents[i]
+
+iterate(cs::CustomSet) = iterate(cs.contents)
+iterate(cs::CustomSet, state::Int) = iterate(cs.contents, state)
 
 function disjoint(cs1::CustomSet, cs2::CustomSet)
     for item in cs1
