@@ -1,4 +1,4 @@
-import Base: isempty, size, IndexStyle, getindex, ==, push!
+import Base: isempty, size, IndexStyle, getindex, ==, push!, intersect!
 
 struct CustomSet{T} <: AbstractVector{T}
     contents::Vector{T}
@@ -29,3 +29,9 @@ function push!(cs::CustomSet, item)
     end
     return cs
 end
+
+function intersect!(cs1::CustomSet, cs2::CustomSet)
+    intersect!(cs1.contents, cs2.contents)
+    return cs1
+end
+
