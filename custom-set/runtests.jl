@@ -135,40 +135,40 @@ end
     end
 end
 
-# @testset "union" begin
-#     @testset "in-place" begin
-#         @test begin
-#             cs1 = CustomSet([])
-#             cs2 = CustomSet([])
-#             union!(cs1, cs2)
-#             isempty(cs1)
-#         end
-#         @test begin
-#             cs1 = CustomSet([])
-#             cs2 = CustomSet([2])
-#             union!(cs1, cs2)
-#             cs1 == CustomSet([2])
-#         end
-#         @test begin
-#             cs1 = CustomSet([1, 3])
-#             cs2 = CustomSet([])
-#             union!(cs1, cs2)
-#             cs1 == CustomSet([1, 3])
-#         end
-#         @test begin
-#             cs1 = CustomSet([1, 3])
-#             cs2 = CustomSet([2, 3])
-#             union!(cs1, cs2)
-#             cs1 == CustomSet([3, 2, 1])
-#         end
-#     end
-#     @testset "not in-place" begin
-#         @test isempty(union(CustomSet([]), CustomSet([])))
-#         @test union(CustomSet([]), CustomSet([2])) == CustomSet([2])
-#         @test union(CustomSet([1, 3]), CustomSet([])) == CustomSet([1, 3])
-#         @test union(CustomSet([1, 3]), CustomSet([2, 3])) == CustomSet([3, 2, 1])
-#     end
-# end
+@testset "union" begin
+    @testset "in-place" begin
+        @test begin
+            cs1 = CustomSet([])
+            cs2 = CustomSet([])
+            union!(cs1, cs2)
+            isempty(cs1)
+        end
+        @test begin
+            cs1 = CustomSet([])
+            cs2 = CustomSet([2])
+            union!(cs1, cs2)
+            cs1 == CustomSet([2])
+        end
+        @test begin
+            cs1 = CustomSet([1, 3])
+            cs2 = CustomSet([])
+            union!(cs1, cs2)
+            cs1 == CustomSet([1, 3])
+        end
+        @test begin
+            cs1 = CustomSet([1, 3])
+            cs2 = CustomSet([2, 3])
+            union!(cs1, cs2)
+            cs1 == CustomSet([3, 2, 1])
+        end
+    end
+    # @testset "not in-place" begin
+    #     @test isempty(union(CustomSet([]), CustomSet([])))
+    #     @test union(CustomSet([]), CustomSet([2])) == CustomSet([2])
+    #     @test union(CustomSet([1, 3]), CustomSet([])) == CustomSet([1, 3])
+    #     @test union(CustomSet([1, 3]), CustomSet([2, 3])) == CustomSet([3, 2, 1])
+    # end
+end
 
 # # language specific tests
 # @testset "implements correct abstract type" begin
