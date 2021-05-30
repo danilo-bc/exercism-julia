@@ -162,12 +162,12 @@ end
             cs1 == CustomSet([3, 2, 1])
         end
     end
-    # @testset "not in-place" begin
-    #     @test isempty(union(CustomSet([]), CustomSet([])))
-    #     @test union(CustomSet([]), CustomSet([2])) == CustomSet([2])
-    #     @test union(CustomSet([1, 3]), CustomSet([])) == CustomSet([1, 3])
-    #     @test union(CustomSet([1, 3]), CustomSet([2, 3])) == CustomSet([3, 2, 1])
-    # end
+    @testset "not in-place" begin
+        @test isempty(union(CustomSet([]), CustomSet([])))
+        @test union(CustomSet([]), CustomSet([2])) == CustomSet([2])
+        @test union(CustomSet([1, 3]), CustomSet([])) == CustomSet([1, 3])
+        @test union(CustomSet([1, 3]), CustomSet([2, 3])) == CustomSet([3, 2, 1])
+    end
 end
 
 # # language specific tests
