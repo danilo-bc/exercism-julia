@@ -40,23 +40,23 @@ end
     @test CustomSet([1, 2, 3]) != CustomSet([1, 2, 3, 4])
 end
 
-# @testset "add" begin
-#     @test begin
-#         custom_set = CustomSet([])
-#         push!(custom_set, 3)
-#         custom_set == CustomSet([3])
-#     end
-#     @test begin
-#         custom_set = CustomSet([1, 2, 4])
-#         push!(custom_set, 3)
-#         custom_set == CustomSet([1, 2, 3, 4])
-#     end
-#     @test begin
-#         custom_set = CustomSet([1, 2, 3])
-#         push!(custom_set, 3)
-#         custom_set == CustomSet([1, 2, 3])
-#     end
-# end
+@testset "add" begin
+    @test begin
+        custom_set = CustomSet([])
+        push!(custom_set, 3)
+        custom_set == CustomSet([3])
+    end
+    @test begin
+        custom_set = CustomSet([1, 2, 4])
+        push!(custom_set, 3)
+        custom_set == CustomSet([1, 2, 3, 4])
+    end
+    @test begin
+        custom_set = CustomSet([1, 2, 3])
+        push!(custom_set, 3)
+        custom_set == CustomSet([1, 2, 3])
+    end
+end
 
 # @testset "intersection" begin
 #     @testset "in-place" begin
