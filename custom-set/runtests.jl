@@ -23,13 +23,13 @@ end
     @test !issubset(CustomSet([1, 2, 3]), CustomSet([4, 1, 3]))
 end
 
-# @testset "disjoint" begin
-#     @test  disjoint(CustomSet([]), CustomSet([]))
-#     @test  disjoint(CustomSet([]), CustomSet([1]))
-#     @test  disjoint(CustomSet([1]), CustomSet([]))
-#     @test !disjoint(CustomSet([1, 2]), CustomSet([2, 3]))
-#     @test  disjoint(CustomSet([1, 2]), CustomSet([3, 4]))
-# end
+@testset "disjoint" begin
+    @test  disjoint(CustomSet([]), CustomSet([]))
+    @test  disjoint(CustomSet([]), CustomSet([1]))
+    @test  disjoint(CustomSet([1]), CustomSet([]))
+    @test !disjoint(CustomSet([1, 2]), CustomSet([2, 3]))
+    @test  disjoint(CustomSet([1, 2]), CustomSet([3, 4]))
+end
 
 # @testset "equal" begin
 #     @test CustomSet([]) == CustomSet([])
