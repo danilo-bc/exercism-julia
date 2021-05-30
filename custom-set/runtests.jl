@@ -8,11 +8,11 @@ include("custom-set.jl")
     @test !isempty(CustomSet([1]))
 end
 
-# @testset "in (contains)" begin
-#     @test !(1 in CustomSet([]))
-#     @test   1 in CustomSet([1, 2, 3])
-#     @test !(4 in CustomSet([1, 2, 3]))
-# end
+@testset "in (contains)" begin
+    @test !(1 in CustomSet([]))
+    @test   1 in CustomSet([1, 2, 3])
+    @test !(4 in CustomSet([1, 2, 3]))
+end
 
 # @testset "subset" begin
 #     @test  issubset(CustomSet([]), CustomSet([]))
@@ -170,7 +170,7 @@ end
 #     end
 # end
 
-# # language specific tests
+# language specific tests
 @testset "implements correct abstract type" begin
     @test CustomSet <: Base.AbstractSet
 end
