@@ -1,6 +1,6 @@
 import Base: isempty, size, IndexStyle, getindex, ==, push!, intersect!, union!, union
 
-mutable struct CustomSet{T} <: AbstractVector{T}
+mutable struct CustomSet{T} <: AbstractSet{T}
     contents::Vector{T}
 end
 
