@@ -1,4 +1,4 @@
-import Base: isempty, size, IndexStyle, getindex, ==, push!, intersect!, union!, union
+import Base: isempty, size, length, IndexStyle, getindex, ==, push!, intersect!, union!, union
 
 mutable struct CustomSet{T} <: AbstractSet{T}
     contents::Vector{T}
@@ -9,6 +9,7 @@ function isempty(cs::CustomSet)
 end
 
 size(cs::CustomSet) = size(cs.contents)
+length(cs::CustomSet) = length(cs.contents)
 IndexStyle(::Type{<:CustomSet}) = IndexLinear()
 getindex(cs::CustomSet, i::Int) = cs.contents[i]
 
