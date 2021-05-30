@@ -31,14 +31,14 @@ end
     @test  disjoint(CustomSet([1, 2]), CustomSet([3, 4]))
 end
 
-# @testset "equal" begin
-#     @test CustomSet([]) == CustomSet([])
-#     @test CustomSet([]) != CustomSet([1, 2, 3])
-#     @test CustomSet([1, 2, 3]) != CustomSet([])
-#     @test CustomSet([1, 2]) == CustomSet([2, 1])
-#     @test CustomSet([1, 2, 3]) != CustomSet([1, 2, 4])
-#     @test CustomSet([1, 2, 3]) != CustomSet([1, 2, 3, 4])
-# end
+@testset "equal" begin
+    @test CustomSet([]) == CustomSet([])
+    @test CustomSet([]) != CustomSet([1, 2, 3])
+    @test CustomSet([1, 2, 3]) != CustomSet([])
+    @test CustomSet([1, 2]) == CustomSet([2, 1])
+    @test CustomSet([1, 2, 3]) != CustomSet([1, 2, 4])
+    @test CustomSet([1, 2, 3]) != CustomSet([1, 2, 3, 4])
+end
 
 # @testset "add" begin
 #     @test begin
