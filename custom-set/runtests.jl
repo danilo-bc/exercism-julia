@@ -175,10 +175,10 @@ end
     @test CustomSet <: Base.AbstractSet
 end
 
-# @testset "length" begin
-#     @test length(CustomSet([])) == 0
-#     @test length(CustomSet([1, 2, 3])) == 3
-# end
+@testset "length" begin
+    @test length(CustomSet([])) == 0
+    @test length(CustomSet([1, 2, 3])) == 3
+end
 
 # @testset "iterable" begin
 #     @test begin
